@@ -38,9 +38,7 @@ HEADERS += \
     c.h \
     d.h
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../lib/release/ -lfileio
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../lib/debug/ -lfileio
-else:unix: LIBS += -L$$PWD/../lib/ -lfileio
+
 
 INCLUDEPATH += $$PWD/../include
 DEPENDPATH += $$PWD/../include
