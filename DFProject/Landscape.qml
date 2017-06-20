@@ -6,8 +6,8 @@ import QtQuick.Dialogs 1.2
 Page {
 
     visible: true
-        width: 640
-        height: 480
+        width: parent.width
+        height: parent.height
         title: qsTr("Hello World")
         id:root
         SwipeView {

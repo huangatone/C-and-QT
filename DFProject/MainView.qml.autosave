@@ -179,9 +179,6 @@ Page {
 
 
 
-
-
-
     Landscape
     {
         x: !inPortrait? drawer.width:0
