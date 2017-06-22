@@ -12,8 +12,6 @@ class MyDB : public QObject
 public:
 	explicit MyDB(QObject *parent = 0);
 
-
-
 	Q_INVOKABLE QString getName() { return "MyDB Class";}
 	Q_INVOKABLE int getResult(int seed) { return seed *2;}
 signals:
