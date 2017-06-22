@@ -24,6 +24,7 @@ Page {
         text: qsTr("Button")
         onClicked: {
             console.log("Button Pressed. Entered text: " + textField1.text);
+             console.log("Button Pressed. MyDB text: " + MyDB.getName());
             root.StackView.view.push("qrc:/MainView.qml")
         }
 

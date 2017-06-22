@@ -1,7 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "mydb.h"
-#include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
@@ -9,11 +7,6 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 
 	QQmlApplicationEngine engine;
-
-	MyDB db;
-
-	engine.rootContext()->setContextProperty("MyDB", &db);
-
 	engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
 	return app.exec();
