@@ -131,6 +131,7 @@ Page {
                 delegate: ItemDelegate {
                     text: qsTr("Title %1").arg(index + 1)
                     width: parent.width
+                    onPressed: console.log(text)
                 }
 
                 ScrollIndicator.vertical: ScrollIndicator { }
