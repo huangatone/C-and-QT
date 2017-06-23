@@ -14,6 +14,12 @@ Page {
         x: 280
         y: 202
         text: qsTr("Button")
+        onClicked: {
+            //var a = Qt.createComponent()
+            var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {color: "red"; width: 20; height: 20}',
+                                                 root,
+                                                 "dynamicSnippet1");
+        }
 
     }
 
