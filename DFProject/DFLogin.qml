@@ -13,12 +13,15 @@ Page {
         id: button
         x: 280
         y: 202
-        text: qsTr("Button")
+        text: qsTr("Button 123")
         onClicked: {
             //var a = Qt.createComponent()
             var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {color: "red"; width: 20; height: 20}',
                                                  root,
                                                  "dynamicSnippet1");
+            var newObject1 = Qt.createQmlObject('import QtQuick.Controls 2.1; Button {  width: 120; height: 30; text:"New"; x:60 ;onClicked: {console.log("Button Pressed.  text: " +  button.text)}}',
+                                                 root,
+                                                 "dynamicSnippet2");
         }
 
     }
