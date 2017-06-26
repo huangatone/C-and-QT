@@ -2,7 +2,8 @@
 #define MYDB_H
 
 #include <QObject>
-
+#include <QDateTime>
+#include <QTimer>
 //#include "webrequest.h"
 
 
@@ -14,16 +15,16 @@ public:
 
 	Q_INVOKABLE QString getName() { return "MyDB Class";}
 	Q_INVOKABLE int getResult(int seed) { return seed *2;}
-signals:
+	Q_INVOKABLE QDateTime getCurrentDateTime() const {
+			return QDateTime::currentDateTime();
+		}
 
+signals:
+ void dataChanged();
 public slots:
 
 private:
-
-
-signals:
-
-public slots:
+ QTimer tm;
 };
 
 #endif // MYDB_H
