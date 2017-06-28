@@ -4,7 +4,8 @@
 #include <QObject>
 #include <QDateTime>
 #include <QTimer>
-//#include "webrequest.h"
+
+#include "webrequest.h"
 
 
 class MyDB : public QObject
@@ -25,6 +26,7 @@ public slots:
 
 private:
  QTimer tm;
+  WebRequest req;
 };
 
 #endif // MYDB_H

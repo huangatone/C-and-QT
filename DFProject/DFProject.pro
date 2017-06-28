@@ -2,8 +2,13 @@ QT += qml quick
 
 CONFIG += c++11
 
+INCLUDEPATH += /devel/DF5/src/include /devel/DF5/qt5/include /devel/DF5/qt5/libs/web
+
+LIBS += -L./ -L/devel/DF5/qt5/lib -ldfweb
+
 SOURCES += main.cpp\
-                mydb.cpp
+                mydb.cpp \
+    dbconnect.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,4 +38,5 @@ DISTFILES += \
     images/cdsi_logo.png
 
 HEADERS += \
-    mydb.h
+    mydb.h \
+    dbconnect.h
