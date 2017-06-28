@@ -138,54 +138,37 @@ Page {
             }
         }
 
-   /* Flickable {
-           id: flickable
-
-           anchors.fill: parent
-           anchors.topMargin: overlayHeader.height
-           anchors.leftMargin: !inPortrait ? drawer.width : undefined
-
-           topMargin: 20
-           bottomMargin: 20
-           contentHeight: column.height
-
-           Column {
-               id: column
-               spacing: 20
-               anchors.margins: 20
-               anchors.left: parent.left
-               anchors.right: parent.right
-
-               Label {
-                   font.pixelSize: 22
-                   width: parent.width
-                   elide: Label.ElideRight
-                   horizontalAlignment: Qt.AlignHCenter
-                   text: qsTr("Side Panel Example")
-               }
-
-               Label {
-                   width: parent.width
-                   wrapMode: Label.WordWrap
-                   text: qsTr("This example demonstrates how Drawer can be used as a non-closable persistent side panel.\n\n" +
-                              "When the application is in portrait mode, the drawer is an interactive side panel that can " +
-                              "be swiped open from the left edge. When the application is in landscape mode, the drawer " +
-                              "and the content are laid out side by side.\n\nThe application is currently in %1 mode.").arg(inPortrait ? qsTr("portrait") : qsTr("landscape"))
-               }
-           }
-
-           ScrollIndicator.vertical: ScrollIndicator { }
-       }
-       */
-
-
-
-
-
 
     Landscape
     {
         x: !inPortrait? drawer.width:0
         width: inPortrait?parent.width :parent.width - drawer.width
     }
+
+    footer: ToolBar {
+        id:foot
+             RowLayout {
+                 id:t_lay1
+                 anchors.fill: parent
+                 ToolButton {
+                     text: qsTr("‹")
+                     onClicked: {
+
+                         //stack.pop()
+                         drawer.visible = true
+                     }
+                 }
+                 Label {
+                     text: "Title"
+                     elide: Label.ElideRight
+                     horizontalAlignment: Qt.AlignHCenter
+                     verticalAlignment: Qt.AlignVCenter
+                     Layout.fillWidth: true
+                 }
+                 ToolButton {
+                     text: qsTr("⋮")
+                     onClicked: menu.open()
+                 }
+             }
+         }
 }

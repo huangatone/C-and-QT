@@ -15,11 +15,11 @@ Page {
             anchors.fill: parent
             currentIndex: tabBar.currentIndex
 
-            Page1 {
+            ListStudy {
                 id:p1
             }
 
-            Page {
+            ListSite {
                 id:p2
                 Label {
                     id: t2
@@ -28,26 +28,29 @@ Page {
                 }
             }
 
-            Page
+            ListSubject
             {
                 id:p3
             }
+
+
         }
 
         footer: TabBar {
             id: tabBar
             currentIndex: swipeView.currentIndex
             TabButton {
-                text: qsTr("First")
+                text: qsTr("Study")
 
             }
             TabButton {
-                text: qsTr("Second")
-                onClicked:  t2.text = p1.button1.text
+                text: qsTr("Site")
+
 
             }
             TabButton {
-                text: qsTr("Third")
+                text: qsTr("Subject")
             }
+
         }
 }

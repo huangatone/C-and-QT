@@ -39,6 +39,13 @@ Page {
 
     }
 
+
+    Label {
+        id: labe_time
+        x: 142
+        y: 10
+        text: qsTr("Label")
+    }
     Label {
         id: label
         x: 142
@@ -73,6 +80,18 @@ Page {
         y: 128
         text: qsTr("Text Field")
     }
+
+    Connections
+    {
+        target: MyDB
+        onDataChanged:
+        {
+            labe_time.text= MyDB.getCurrentDateTime()
+            console.log("The application data changed!")
+            console.log("Hha!")
+        }
+    }
+
 
 
 }
