@@ -30,9 +30,10 @@ Page {
                          drawer.visible = true
                      }
                  }
-                 Label {
-                     text: "Title"
-                     elide: Label.ElideRight
+                 Image {
+                     id: logo
+                     source: "images/cdsi_logo.png"
+
                      horizontalAlignment: Qt.AlignHCenter
                      verticalAlignment: Qt.AlignVCenter
                      Layout.fillWidth: true

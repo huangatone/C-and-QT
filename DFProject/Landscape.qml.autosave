@@ -58,7 +58,7 @@ Page {
                 text: qsTr("Subject")
             }
             TabButton {
-                text: qsTr("Subject")
+                text: qsTr("Page")
             }
 
         }

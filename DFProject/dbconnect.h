@@ -34,7 +34,7 @@ signals:
 
 private:
     QString uid;
-    //QString responseStr;
+	//QString responseStr;
     WebRequest req;
     bool isconnected;
 };

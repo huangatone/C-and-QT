@@ -34,10 +34,7 @@ ApplicationWindow {
         {
 
         }
-        Myweb
-        {
 
-        }
     }
 
     footer: TabBar {

@@ -6,11 +6,7 @@ Rectangle {
     ListView {
         id: view
         anchors.fill: parent
-        delegate: Thumbnail {
-            width: view.width
-            text: modelData.title
-            iconSource: modelData.media.m
-        }
+
     }
 
     function request() {

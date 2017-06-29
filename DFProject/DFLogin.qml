@@ -9,11 +9,21 @@ Page {
     title: qsTr("Hello World")
     id:root
 
+    Image {
+        id: logo
+        source: "images/cdsi_logo.png"
+        x:0
+        y:0
+        horizontalAlignment: Qt.AlignHCenter
+        verticalAlignment: Qt.AlignVCenter
+        Layout.fillWidth: true
+    }
+
     Button {
         id: button
-        x: 280
+        x: 140
         y: 202
-        text: qsTr("Button 123")
+        text: qsTr("Cancel")
         onClicked: {
             //var a = Qt.createComponent()
             var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {color: "red"; width: 20; height: 20}',
@@ -28,9 +38,9 @@ Page {
 
     Button {
         id: button1
-        x: 147
+        x: 10
         y: 202
-        text: qsTr("Button")
+        text: qsTr("Login")
         onClicked: {
             console.log("Button Pressed. Entered text: " + textField1.text);
              console.log("Button Pressed. MyDB text: " + MyDB.getName());
@@ -40,45 +50,40 @@ Page {
     }
 
 
-    Label {
-        id: labe_time
-        x: 142
-        y: 10
-        text: qsTr("Label")
-    }
+
     Label {
         id: label
-        x: 142
+        x: 10
         y: 81
-        text: qsTr("Label")
+        text: qsTr("User name")
     }
 
     Label {
         id: label1
-        x: 147
+        x: 10
         y: 135
-        text: qsTr("Label")
+        text: qsTr("Password")
     }
 
     CheckBox {
         id: checkBox
-        x: 439
+        x: 320
         y: 135
-        text: qsTr("Check Box")
+        text: qsTr("Remenber me")
     }
 
     TextField {
         id: textField
-        x: 220
+        x: 110
         y: 69
-        text: qsTr("Text Field")
+        text: qsTr("Name")
     }
 
     TextField {
         id: textField1
-        x: 220
+        x: 110
         y: 128
-        text: qsTr("Text Field")
+        text: qsTr("Pasword")
     }
 
     Connections
