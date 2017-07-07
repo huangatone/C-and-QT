@@ -12,6 +12,7 @@
 		E794A2D91F0598C500DDE8C5 /* CodePorject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E794A2D71F0598C500DDE8C5 /* CodePorject.cpp */; };
 		E79FFF661F01AA12003511FF /* main1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79FFF651F01AA12003511FF /* main1.cpp */; };
 		E79FFF6E1F02A0A3003511FF /* dfexploredefine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E79FFF6C1F02A0A3003511FF /* dfexploredefine.cpp */; };
+		E7F963271F0C227C005ADD96 /* atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F963261F0C227C005ADD96 /* atomic.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		E79FFF651F01AA12003511FF /* main1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main1.cpp; sourceTree = "<group>"; };
 		E79FFF6C1F02A0A3003511FF /* dfexploredefine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dfexploredefine.cpp; sourceTree = "<group>"; };
 		E79FFF6D1F02A0A3003511FF /* dfexploredefine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dfexploredefine.hpp; sourceTree = "<group>"; };
+		E7F963261F0C227C005ADD96 /* atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = atomic.cpp; path = ../atomic.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		E79FFF641F01AA12003511FF /* TestX */ = {
 			isa = PBXGroup;
 			children = (
+				E7F963261F0C227C005ADD96 /* atomic.cpp */,
 				E79FFF651F01AA12003511FF /* main1.cpp */,
 				E79FFF6C1F02A0A3003511FF /* dfexploredefine.cpp */,
 				E79FFF6D1F02A0A3003511FF /* dfexploredefine.hpp */,
@@ -143,6 +146,7 @@
 				E7873F2A1F041F0000EB4CF4 /* Test1.cpp in Sources */,
 				E79FFF6E1F02A0A3003511FF /* dfexploredefine.cpp in Sources */,
 				E7873F2D1F0427F500EB4CF4 /* main.cpp in Sources */,
+				E7F963271F0C227C005ADD96 /* atomic.cpp in Sources */,
 				E79FFF661F01AA12003511FF /* main1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

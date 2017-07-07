@@ -219,7 +219,7 @@ void loggerfunc()
     }
 }
 
-int main()
+int mainCode()
 {
     // initialize a random generator
     std::mt19937 generator((unsigned int)std::chrono::system_clock::now().time_since_epoch().count());
