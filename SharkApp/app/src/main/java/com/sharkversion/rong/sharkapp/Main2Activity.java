@@ -6,10 +6,17 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
+import  android.widget.TextView;
 import android.view.ViewGroup;
 import java.util.List;
 import java.util.ArrayList;
 import android.view.LayoutInflater;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import  java.util.*;
+
+
+import org.json.JSONObject;
 
 
 public class Main2Activity extends AppCompatActivity {
@@ -107,7 +114,34 @@ public class Main2Activity extends AppCompatActivity {
 
         LayoutInflater lf = getLayoutInflater().from(this);
         view1 = lf.inflate(R.layout.page1, null);
-        view2 = lf.inflate(R.layout.page1, null);
+        view2 = lf.inflate(R.layout.page2, null);
+
+        View view4 = lf.inflate(R.layout.itemlay, null);
+
+
+        ListView list = (ListView) view2.findViewById(R.id.conn);
+
+        List<String> data = new ArrayList<String>();
+        data.add("44");
+        data.add("55");
+        data.add("66");
+        data.add("++");
+
+        List<Map<String, Object>> list111=new ArrayList<Map<String,Object>>();
+        for (int i = 0; i < 10; i++) {
+            Map<String, Object> map=new HashMap<String, Object>();
+            map.put("image", R.drawable.kinetic);
+            map.put("title", "这是一个标题"+i);
+            map.put("info", "这是一个详细信息" + i);
+            list111.add(map);
+        }
+
+        list.setAdapter(new ListViewAdapter(this, list111));
+
+       // list.setAdapter(adapter);
+  /*       list.getItemsCanFocus();
+*/
+
         view3 = lf.inflate(R.layout.page1, null);
 
         views = new ArrayList<View>();// 将要分页显示的View装入数组中
