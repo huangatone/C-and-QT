@@ -171,7 +171,8 @@ public class Main2Activity extends AppCompatActivity {
         boolean bNet =  checkNetworkConnection();
         if(bNet) {
             Log.v("Good", "Have internet");
-            new HTTPAsyncTask().execute("http://hmkcode.com/examples/index.php");
+            //new HTTPAsyncTask().execute("http://hmkcode.com/examples/index.php");
+            new HTTPAsyncTask().execute("http://sharknet.somee.com/json.json");
         }
         else
             Log.v("Good", "Not Internet");
