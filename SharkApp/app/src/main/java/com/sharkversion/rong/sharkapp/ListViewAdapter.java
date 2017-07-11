@@ -70,4 +70,13 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void addItem(String name,String tel, String wechart,String provider)
+    {
+        Map<String, Object> map=new HashMap<String, Object>();
+        map.put("image", R.drawable.kinetic);
+        map.put("title", name);
+        map.put("info", wechart);
+        data.add(map);
+    }
+
 }

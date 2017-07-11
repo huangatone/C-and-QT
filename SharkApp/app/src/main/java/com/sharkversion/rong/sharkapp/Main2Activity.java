@@ -26,6 +26,15 @@ import 	android.net.NetworkInfo;
 import android.os.AsyncTask;
 import org.json.JSONObject;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.widget.Toast;
+
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -34,6 +43,7 @@ public class Main2Activity extends AppCompatActivity {
     private View view1, view2, view3;//需要滑动的页卡
     private List<View> views;// Tab页面列表
     private ArrayList<String> titleList;
+    private ListViewAdapter conAdp;
 
 
     @Override
@@ -119,8 +129,6 @@ public class Main2Activity extends AppCompatActivity {
 
     private void initView()
     {
-
-
         LayoutInflater lf = getLayoutInflater().from(this);
         view1 = lf.inflate(R.layout.page1, null);
         view2 = lf.inflate(R.layout.page2, null);
@@ -144,8 +152,8 @@ public class Main2Activity extends AppCompatActivity {
             map.put("info", "这是一个详细信息" + i);
             list111.add(map);
         }
-
-        list.setAdapter(new ListViewAdapter(this, list111));
+        conAdp = new ListViewAdapter(this, list111);
+        list.setAdapter(conAdp);
 
        // list.setAdapter(adapter);
   /*       list.getItemsCanFocus();
@@ -158,11 +166,6 @@ public class Main2Activity extends AppCompatActivity {
         views.add(view2);
         views.add(view3);
 
-        titleList = new ArrayList<String>();// 每个页面的Title数据
-        titleList.add("wp");
-        titleList.add("jy");
-        titleList.add("jh");
-
 
         //String a = getJSON("http://date.jsontest.com/");
         //OpenHttp();
@@ -172,7 +175,10 @@ public class Main2Activity extends AppCompatActivity {
         if(bNet) {
             Log.v("Good", "Have internet");
             //new HTTPAsyncTask().execute("http://hmkcode.com/examples/index.php");
-            new HTTPAsyncTask().execute("http://sharknet.somee.com/json.json");
+            //new HTTPAsyncTask().execute("http://sharknet.somee.com/info.json");
+            String uuu = "http://api.androidhive.info/contacts/";
+            String my_str  = "http://sharknet.somee.com/info.json";
+            new HTTPAsyncTask().execute(my_str);
         }
         else
             Log.v("Good", "Not Internet");
@@ -326,6 +332,93 @@ public class Main2Activity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             //tvResult.setText(result);
             Log.v("Good", result);
+            if (result != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(result);
+/*
+                    // Getting JSON Array node
+                    JSONArray contacts = jsonObj.getJSONArray("contacts");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < contacts.length(); i++) {
+                        JSONObject c = contacts.getJSONObject(i);
+
+                        String id = c.getString("id");
+                        String name = c.getString("name");
+                        String email = c.getString("email");
+                        String address = c.getString("address");
+                        String gender = c.getString("gender");
+
+                        // Phone node is JSON Object
+                        JSONObject phone = c.getJSONObject("phone");
+                        String mobile = phone.getString("mobile");
+                        String home = phone.getString("home");
+                        String office = phone.getString("office");
+
+                        // tmp hash map for single contact
+                        HashMap<String, String> contact = new HashMap<>();
+
+                        // adding each child node to HashMap key => value
+                        contact.put("id", id);
+                        contact.put("name", name);
+                        contact.put("email", email);
+                        contact.put("mobile", mobile);
+
+                        // adding contact to contact list
+                       // contactList.add(contact);
+                    }
+                */
+
+                    // Getting JSON Array node
+                    JSONArray contacts = jsonObj.getJSONArray("Contacts");
+
+                    // looping through All Contacts
+                    for (int i = 0; i < contacts.length(); i++) {
+                        JSONObject c = contacts.getJSONObject(i);
+
+
+                        String name = c.getString("Name");
+                        String pic = c.getString("pic");
+                        String tel = c.getString("Tel");
+                        String wechart = c.getString("Provider");
+
+                        conAdp.addItem(name,tel,wechart,tel);
+
+                        //conAdp.get
+
+                        // adding contact to contact list
+                        // contactList.add(contact);
+                    }
+                    ListView list = (ListView) view2.findViewById(R.id.conn);
+                    list.setAdapter(conAdp);
+                } catch (final JSONException e) {
+                    Log.e("haha", "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+
+                }
+            } else {
+                Log.e("ooo", "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+            }
+
+
         }
     }
 
