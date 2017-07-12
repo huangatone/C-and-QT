@@ -382,9 +382,9 @@ public class Main2Activity extends AppCompatActivity implements
                         String name = c.getString("Name");
                         String pic = c.getString("pic");
                         String tel = c.getString("Tel");
-                        String wechart = c.getString("Provider");
+                       // String wechart = c.getString("Name1");
 
-                        conAdp1.addItem(name,tel,wechart,tel);
+                        conAdp1.addItem(name,tel,"ff",pic);
 
                         //conAdp.get
 

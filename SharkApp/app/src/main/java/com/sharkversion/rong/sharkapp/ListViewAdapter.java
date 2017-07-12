@@ -7,6 +7,13 @@ import android.content.*;
 import java.util.*;
 import android.view.View.OnClickListener;
 
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.graphics.BitmapFactory;
+import java.io.InputStream;
+import java.net.URL;
+import 	android.net.Uri;
+
 /**
  * Created by rong on 7/10/17.
  */
@@ -60,12 +67,19 @@ public class ListViewAdapter extends BaseAdapter {
             zujian.title=(TextView)convertView.findViewById(R.id.title);
             zujian.view=(Button)convertView.findViewById(R.id.viewDetail);
             zujian.info=(TextView)convertView.findViewById(R.id.info);
+
+
+
             convertView.setTag(zujian);
         }else{
             zujian=(Zujian)convertView.getTag();
         }
         //绑定数据
-        zujian.image.setBackgroundResource((Integer)data.get(position).get("image"));
+        //new DownLoadImageTask(zujian.image).execute((String) data.get(position).get("image"));
+        new DownLoadImageTask(zujian.image).execute("http://www.freepngimg.com/download/lion/1-lion-png-image-image-download-picture-lions.png");
+       // zujian.image.setBackgroundResource((Integer)data.get(position).get("image"));
+        Uri imgUri=Uri.parse("http://www.freepngimg.com/download/lion/1-lion-png-image-image-download-picture-lions.png");
+        zujian.image.setImageURI( imgUri);
         zujian.title.setText((String)data.get(position).get("title"));
         zujian.info.setText((String)data.get(position).get("info"));
 
@@ -85,16 +99,16 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(String name,String tel, String wechart,String provider)
+    public void addItem(String name,String tel, String wechart,String pic)
     {
         Map<String, Object> map=new HashMap<String, Object>();
-        map.put("image", R.drawable.kinetic);
+        map.put("image", pic);
         map.put("title", name);
         map.put("info", wechart);
         data.add(map);
 
         map=new HashMap<String, Object>();
-        map.put("image", R.drawable.kinetic);
+        map.put("image", pic);
         map.put("title", "这是一个标题"+0);
         map.put("info", "这是一个详细信息" + 0);
 
@@ -110,6 +124,43 @@ public class ListViewAdapter extends BaseAdapter {
 
     public void setCustomButtonListner(customButtonListener listener) {
         this.customListner = listener;
+    }
+
+
+    private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap>{
+        ImageView imageView;
+
+        public DownLoadImageTask(ImageView imageView){
+            this.imageView = imageView;
+        }
+
+        /*
+            doInBackground(Params... params)
+                Override this method to perform a computation on a background thread.
+         */
+        protected Bitmap doInBackground(String...urls){
+            String urlOfImage = urls[0];
+            Bitmap logo = null;
+            try{
+                InputStream is = new URL(urlOfImage).openStream();
+                /*
+                    decodeStream(InputStream is)
+                        Decode an input stream into a bitmap.
+                 */
+                logo = BitmapFactory.decodeStream(is);
+            }catch(Exception e){ // Catch the download exception
+                e.printStackTrace();
+            }
+            return logo;
+        }
+
+        /*
+            onPostExecute(Result result)
+                Runs on the UI thread after doInBackground(Params...).
+         */
+        protected void onPostExecute(Bitmap result){
+            imageView.setImageBitmap(result);
+        }
     }
 
 }
