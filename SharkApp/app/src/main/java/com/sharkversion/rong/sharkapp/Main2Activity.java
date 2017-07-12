@@ -37,6 +37,8 @@ import android.widget.Toast;
 
 import  com.sharkversion.rong.sharkapp.ListViewAdapter.customButtonListener;
 
+import android.content.Intent;
+
 public class Main2Activity extends AppCompatActivity implements
         customButtonListener
           {
@@ -461,6 +463,11 @@ public class Main2Activity extends AppCompatActivity implements
     public void onButtonClickListner(int position, String value) {
       Toast.makeText(Main2Activity.this, "Button click " + value,
               Toast.LENGTH_SHORT).show();
+
+        Intent ipp = new Intent(this, Main3Activity.class);
+        ipp.putExtra("Value1", "This value one for ActivityTwo ");
+        ipp.putExtra("Value2", "This value two ActivityTwo");
+        startActivity(ipp);
 
     }
 
