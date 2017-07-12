@@ -35,8 +35,11 @@ import java.util.HashMap;
 
 import android.widget.Toast;
 
+import  com.sharkversion.rong.sharkapp.ListViewAdapter.customButtonListener;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements
+        customButtonListener
+          {
 
 
     private ViewPager mViewPager;
@@ -138,11 +141,6 @@ public class Main2Activity extends AppCompatActivity {
 
         ListView list = (ListView) view2.findViewById(R.id.conn);
 
-        List<String> data = new ArrayList<String>();
-        data.add("44");
-        data.add("55");
-        data.add("66");
-        data.add("++");
 
         List<Map<String, Object>> list111=new ArrayList<Map<String,Object>>();
         for (int i = 0; i < 10; i++) {
@@ -150,10 +148,11 @@ public class Main2Activity extends AppCompatActivity {
             map.put("image", R.drawable.kinetic);
             map.put("title", "这是一个标题"+i);
             map.put("info", "这是一个详细信息" + i);
-            list111.add(map);
+           // list111.add(map);
         }
         conAdp = new ListViewAdapter(this, list111);
         list.setAdapter(conAdp);
+        conAdp.setCustomButtonListner(Main2Activity.this);
 
        // list.setAdapter(adapter);
   /*       list.getItemsCanFocus();
@@ -169,8 +168,7 @@ public class Main2Activity extends AppCompatActivity {
 
         //String a = getJSON("http://date.jsontest.com/");
         //OpenHttp();
-        Log.v("Good", "index=" + 6);
-        Log.v("Good", "jj");
+
         boolean bNet =  checkNetworkConnection();
         if(bNet) {
             Log.v("Good", "Have internet");
@@ -334,6 +332,8 @@ public class Main2Activity extends AppCompatActivity {
             Log.v("Good", result);
             if (result != null) {
                 try {
+                    ListView list = (ListView) view2.findViewById(R.id.conn);
+                    ListViewAdapter conAdp1 =(ListViewAdapter) list.getAdapter();
                     JSONObject jsonObj = new JSONObject(result);
 /*
                     // Getting JSON Array node
@@ -382,15 +382,15 @@ public class Main2Activity extends AppCompatActivity {
                         String tel = c.getString("Tel");
                         String wechart = c.getString("Provider");
 
-                        conAdp.addItem(name,tel,wechart,tel);
+                        conAdp1.addItem(name,tel,wechart,tel);
 
                         //conAdp.get
 
                         // adding contact to contact list
                         // contactList.add(contact);
                     }
-                    ListView list = (ListView) view2.findViewById(R.id.conn);
-                    list.setAdapter(conAdp);
+
+                    list.setAdapter(conAdp1);
                 } catch (final JSONException e) {
                     Log.e("haha", "Json parsing error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
@@ -455,6 +455,12 @@ public class Main2Activity extends AppCompatActivity {
 
         inputStream.close();
         return result;
+
+    }
+
+    public void onButtonClickListner(int position, String value) {
+      Toast.makeText(Main2Activity.this, "Button click " + value,
+              Toast.LENGTH_SHORT).show();
 
     }
 

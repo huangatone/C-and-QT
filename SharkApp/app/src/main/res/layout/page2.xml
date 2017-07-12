@@ -8,7 +8,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="417dp"
+        android:layout_height="match_parent"
         android:headerDividersEnabled="true"
         android:footerDividersEnabled="true"
         android:id="@+id/conn" />

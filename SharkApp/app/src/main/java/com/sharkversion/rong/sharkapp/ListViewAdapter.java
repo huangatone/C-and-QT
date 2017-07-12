@@ -5,6 +5,7 @@ import  android.view.*;
 import  android.widget.*;
 import android.content.*;
 import java.util.*;
+import android.view.View.OnClickListener;
 
 /**
  * Created by rong on 7/10/17.
@@ -49,7 +50,7 @@ public class ListViewAdapter extends BaseAdapter {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Zujian zujian=null;
         if(convertView==null){
             zujian=new Zujian();
@@ -57,7 +58,7 @@ public class ListViewAdapter extends BaseAdapter {
             convertView=layoutInflater.inflate(R.layout.listview, null);
             zujian.image=(ImageView)convertView.findViewById(R.id.image);
             zujian.title=(TextView)convertView.findViewById(R.id.title);
-            zujian.view=(Button)convertView.findViewById(R.id.view);
+            zujian.view=(Button)convertView.findViewById(R.id.viewDetail);
             zujian.info=(TextView)convertView.findViewById(R.id.info);
             convertView.setTag(zujian);
         }else{
@@ -67,6 +68,20 @@ public class ListViewAdapter extends BaseAdapter {
         zujian.image.setBackgroundResource((Integer)data.get(position).get("image"));
         zujian.title.setText((String)data.get(position).get("title"));
         zujian.info.setText((String)data.get(position).get("info"));
+
+        //ViewHolder viewHolder;
+        Button btn = (Button) convertView.findViewById(R.id.viewDetail);
+        btn.setOnClickListener(new OnClickListener() {
+
+
+            public void onClick(View v) {
+                if (customListner != null) {
+                    customListner.onButtonClickListner(position, (String)data.get(position).get("title"));
+                }
+
+            }
+        });
+
         return convertView;
     }
 
@@ -77,6 +92,24 @@ public class ListViewAdapter extends BaseAdapter {
         map.put("title", name);
         map.put("info", wechart);
         data.add(map);
+
+        map=new HashMap<String, Object>();
+        map.put("image", R.drawable.kinetic);
+        map.put("title", "这是一个标题"+0);
+        map.put("info", "这是一个详细信息" + 0);
+
+        data.add(map);
+
+    }
+
+    private customButtonListener customListner;
+    public interface customButtonListener
+    {
+        public void onButtonClickListner(int position,String value);
+    }
+
+    public void setCustomButtonListner(customButtonListener listener) {
+        this.customListner = listener;
     }
 
 }
