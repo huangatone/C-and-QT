@@ -140,18 +140,10 @@ public class Main2Activity extends AppCompatActivity implements
 
         View view4 = lf.inflate(R.layout.itemlay, null);
 
-
         ListView list = (ListView) view2.findViewById(R.id.conn);
 
-
         List<Map<String, Object>> list111=new ArrayList<Map<String,Object>>();
-        for (int i = 0; i < 10; i++) {
-            Map<String, Object> map=new HashMap<String, Object>();
-            map.put("image", R.drawable.kinetic);
-            map.put("title", "这是一个标题"+i);
-            map.put("info", "这是一个详细信息" + i);
-           // list111.add(map);
-        }
+
         conAdp = new ListViewAdapter(this, list111);
         list.setAdapter(conAdp);
         conAdp.setCustomButtonListner(Main2Activity.this);
@@ -177,7 +169,7 @@ public class Main2Activity extends AppCompatActivity implements
             //new HTTPAsyncTask().execute("http://hmkcode.com/examples/index.php");
             //new HTTPAsyncTask().execute("http://sharknet.somee.com/info.json");
             String uuu = "http://api.androidhive.info/contacts/";
-            String my_str  = "http://sharknet.somee.com/info.json";
+            String my_str  = "http://sharknet.somee.com/info_group1.json";
             new HTTPAsyncTask().execute(my_str);
         }
         else
@@ -382,9 +374,10 @@ public class Main2Activity extends AppCompatActivity implements
                         String name = c.getString("Name");
                         String pic = c.getString("pic");
                         String tel = c.getString("Tel");
+                        ;
                        // String wechart = c.getString("Name1");
 
-                        conAdp1.addItem(name,tel,"ff",pic);
+                        conAdp1.addItem(name,tel,"ff",pic,c.getJSONObject("Provider") );
 
                         //conAdp.get
 

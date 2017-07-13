@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.graphics.Rect;
 
 import 	android.graphics.Matrix;
+import org.json.JSONObject;
 
 /**
  * Created by rong on 7/10/17.
@@ -40,6 +41,7 @@ public class ListViewAdapter extends BaseAdapter {
         public TextView title;
         public Button view;
         public TextView info;
+        public JSONObject pro;
     }
     @Override
     public int getCount() {
@@ -60,7 +62,8 @@ public class ListViewAdapter extends BaseAdapter {
         return position;
     }
 
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent)
+    {
         Zujian zujian=null;
         if(convertView==null){
             zujian=new Zujian();
@@ -72,19 +75,20 @@ public class ListViewAdapter extends BaseAdapter {
             zujian.info=(TextView)convertView.findViewById(R.id.info);
 
 
-
             convertView.setTag(zujian);
         }else{
             zujian=(Zujian)convertView.getTag();
         }
+        zujian.pro = new JSONObject();
         //绑定数据
         //new DownLoadImageTask(zujian.image).execute((String) data.get(position).get("image"));
-        new DownLoadImageTask(zujian.image).execute("http://www.freepngimg.com/download/lion/1-lion-png-image-image-download-picture-lions.png");
+        new DownLoadImageTask(zujian.image).execute("http://sharknet.somee.com/images/head.png");
        // zujian.image.setBackgroundResource((Integer)data.get(position).get("image"));
-        Uri imgUri=Uri.parse("http://www.freepngimg.com/download/lion/1-lion-png-image-image-download-picture-lions.png");
-        zujian.image.setImageURI( imgUri);
+        //Uri imgUri=Uri.parse("http://sharknet.somee.com/images/head.png");
+        //zujian.image.setImageURI( imgUri);
         zujian.title.setText((String)data.get(position).get("title"));
         zujian.info.setText((String)data.get(position).get("info"));
+        zujian.pro = (JSONObject)  data.get(position).get("Provider");
 
         //ViewHolder viewHolder;
         Button btn = (Button) convertView.findViewById(R.id.viewDetail);
@@ -102,21 +106,22 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(String name,String tel, String wechart,String pic)
+    public void addItem(String name,String tel, String wechart,String pic,JSONObject obj)
     {
         Map<String, Object> map=new HashMap<String, Object>();
         map.put("image", pic);
         map.put("title", name);
         map.put("info", wechart);
+        map.put("Provider",obj);
         data.add(map);
-
+/*
         map=new HashMap<String, Object>();
         map.put("image", pic);
         map.put("title", "这是一个标题"+0);
         map.put("info", "这是一个详细信息" + 0);
 
         data.add(map);
-
+*/
     }
 
     private customButtonListener customListner;
