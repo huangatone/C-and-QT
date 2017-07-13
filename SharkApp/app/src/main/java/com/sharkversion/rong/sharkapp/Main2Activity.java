@@ -377,7 +377,7 @@ public class Main2Activity extends AppCompatActivity implements
                         ;
                        // String wechart = c.getString("Name1");
 
-                        conAdp1.addItem(name,tel,"ff",pic,c.getJSONObject("Provider") );
+                        conAdp1.addItem(name,tel,tel,pic,c.getJSONObject("Provider") );
 
                         //conAdp.get
 
