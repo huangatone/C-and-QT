@@ -12,7 +12,10 @@ import android.os.AsyncTask;
 import android.graphics.BitmapFactory;
 import java.io.InputStream;
 import java.net.URL;
-import 	android.net.Uri;
+import android.net.Uri;
+import android.graphics.Rect;
+
+import 	android.graphics.Matrix;
 
 /**
  * Created by rong on 7/10/17.
@@ -147,7 +150,26 @@ public class ListViewAdapter extends BaseAdapter {
                     decodeStream(InputStream is)
                         Decode an input stream into a bitmap.
                  */
-                logo = BitmapFactory.decodeStream(is);
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                Bitmap resizedBitmap = BitmapFactory.decodeStream(is);
+
+                int width = resizedBitmap.getWidth();
+                int height = resizedBitmap.getHeight();
+
+                float scaleWidth = ((float) 48) / width;
+                float scaleHeight = ((float) 48) / height;
+
+                // CREATE A MATRIX FOR THE MANIPULATION
+                Matrix matrix = new Matrix();
+                // RESIZE THE BIT MAP
+                matrix.postScale(scaleWidth, scaleHeight);
+
+                // "RECREATE" THE NEW BITMAP
+                logo = Bitmap.createScaledBitmap(resizedBitmap, 48, 48, true);//Bitmap.createBitmap( resizedBitmap, 0, 0, 48, 48, matrix, false);
+                //logo = resizedBitmap;
+                //resizedBitmap.recycle();
+
+
             }catch(Exception e){ // Catch the download exception
                 e.printStackTrace();
             }
