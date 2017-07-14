@@ -46,6 +46,8 @@ import android.widget.Toast;
 
 import android.content.Intent;
 
+import 	android.widget.SimpleAdapter;
+
 
 public class MainView extends AppCompatActivity {
 
@@ -80,6 +82,11 @@ public class MainView extends AppCompatActivity {
 
 
         initView();
+
+        InitPage1();
+        InitPage2();
+        InitPage3();
+        InitPage4();
 
         PagerAdapter pagerAdapter = new PagerAdapter() {
 
@@ -130,6 +137,57 @@ public class MainView extends AppCompatActivity {
         views.add(view1);
         views.add(view2);
         views.add(view3);
+
+
+
+    }
+
+    private  void InitPage1()
+    {
+        ListView weblist = (ListView) view1.findViewById(R.id.weblist);
+
+        List<Map<String, Object>> data1 = new ArrayList< Map<String, Object> > ();
+        Map<String, Object> item = new HashMap<String, Object>();
+        item.put("itemTitle","item1");
+        item.put("itemPhoto",R.drawable.call);
+
+        item.put("itemSummary","item1");
+        item.put("itemAuthor","item1");
+        item.put("itemPublishtime","item1");
+
+        data1.add(item);
+
+        item = new HashMap<String, Object>();
+        item.put("itemTitle","item2");
+        item.put("itemPhoto", R.drawable.email);
+        item.put("itemSummary","item2");
+        item.put("itemAuthor","item2");
+        item.put("itemPublishtime","item2");
+
+        data1.add(item);
+
+
+        //创建简单适配器SimpleAdapter
+        SimpleAdapter simpleAdapter = new SimpleAdapter(this, data1, R.layout.weblistitem,
+                new String[] {"itemTitle","itemPhoto", "itemSummary", "itemAuthor", "itemPublishtime"},
+                new int[] {R.id.title, R.id.photograph, R.id.summary, R.id.author, R.id.publishtime});
+
+        //加载SimpleAdapter到ListView中
+        weblist.setAdapter(simpleAdapter);
+    }
+
+    private  void InitPage2() {
+
+    }
+
+    private  void InitPage3()
+    {
+
+    }
+
+    private  void InitPage4()
+    {
+
     }
 
 }
