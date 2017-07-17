@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginRight="5dip">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="128dip"
+            android:layout_height="128dip"  />
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="Rihanna Love the way lie"
+            android:textColor="#040404"
+            android:typeface="sans"
+            android:textSize="15dip"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:textColor="#343434"
+            android:textSize="10dip"
+            android:layout_marginTop="1dip"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="Just gona stand there and ..."
+            tools:text="gggggg" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/title"
+            android:gravity="right"
+            android:text="5:45"
+            android:layout_marginRight="5dip"
+            android:textSize="10dip"
+            android:textColor="#10bcc9"
+            android:textStyle="bold"/>
+
+
+
+        <!-- 进入播放 -->
+        <ImageView
+            android:id="@+id/playBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/call"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    <Button
+        android:id="@+id/viewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+
+        android:layout_toLeftOf="@id/playBtn"
+        android:layout_alignTop="@id/title"
+
+        android:visibility="visible"
+        android:text="tttttt" />
+
+</RelativeLayout>
