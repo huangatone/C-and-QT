@@ -49,6 +49,7 @@ import android.content.Intent;
 import 	android.widget.SimpleAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 
 import  com.sharkversion.rong.sharkview.ListViewAdapter.customButtonListener;
 
@@ -166,6 +167,18 @@ public class MainView extends AppCompatActivity implements
 
              }}
         );
+
+/*
+        RelativeLayout  r = (RelativeLayout ) findViewById( R.id.mainlayout);
+
+        int a = r.getLayoutParams().height;
+
+        int b = r.getLayoutParams().width;
+
+        int c = tab.getLayoutParams().height;
+        ViewGroup.LayoutParams params = mViewPager.getLayoutParams();
+        params.height = 500 -60;
+        mViewPager.setLayoutParams(params);*/
 
     }
 
