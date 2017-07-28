@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 
 	qmlRegisterType<A>("test", 1, 0, "A");
-	  qmlRegisterType<B>("test", 1, 0, "B");
-	  qmlRegisterType<C>("test", 1, 0, "C");
+	qmlRegisterType<B>("test", 1, 0, "B");
+	qmlRegisterType<C>("test", 1, 0, "C");
 	qmlRegisterType<D>("test", 1, 0, "D");
 
 	QQmlApplicationEngine engine;
